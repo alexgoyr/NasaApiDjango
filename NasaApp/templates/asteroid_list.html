@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#asteroids {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+#asteroids td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+#asteroids tr:nth-child(even){background-color: #f2f2f2;}
+  
+#asteroids tr:hover {background-color: #ddd;}
+  
+#asteroids th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #608DF8;
+    color: white;
+}
+</style>
+</head>
+<body>
+<table id="asteroids" class="table is-fullwidth is-striped is-bordered">
+    <title>Asteroids</title>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Distance from Earth</th>
+        <th>Next passing close to Earth</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for asteroid in asteroids %}
+    <tr data-href={{ asteroid.id }} style="cursor: pointer;">
+        <td>{{ asteroid.name }}</td>
+        <td>~{{ asteroid.sizemin }} - {{ asteroid.sizemax }} Kg</td>
+        <td>{{ asteroid.distance }} Km</td>
+        <td>{{ asteroid.nexttime }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const rows = document.querySelectorAll("tr[data-href]");
+        rows.forEach(row => {
+            row.addEventListener("click", () => {
+                window.location.href = row.dataset.href;
+            })
+        })
+    })
+</script>
