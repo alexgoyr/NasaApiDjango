@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#asteroid {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+#asteroid td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+#asteroid tr:nth-child(even){background-color: #f2f2f2;}
+  
+#asteroid tr:hover {background-color: #ddd;}
+  
+#asteroid th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #608DF8;
+    color: white;
+}
+</style>
+</head>
+<body>
+<table id="asteroid" class="table is-fullwidth is-striped is-bordered">
+    <title>Asteroid Details</title>
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Distance from the Earth</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for closeApproach in previousCloseApproach %}
+    <tr>
+        <td>{{ closeApproach.date }}</td>
+        <td>{{ closeApproach.distance }} lunar distance(s)</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

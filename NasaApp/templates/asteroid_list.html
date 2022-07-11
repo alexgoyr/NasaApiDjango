@@ -31,18 +31,18 @@
     <title>Asteroids</title>
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Size</th>
-        <th>Distance from Earth</th>
-        <th>Next passing close to Earth</th>
+        <th>Asteroid name</th>
+        <th>Estimated size (diamater)</th>
+        <th>Distance from the Earth</th>
+        <th>Next passing close to the Earth</th>
     </tr>
     </thead>
     <tbody>
     {% for asteroid in asteroids %}
     <tr data-href={{ asteroid.id }} style="cursor: pointer;">
         <td>{{ asteroid.name }}</td>
-        <td>~{{ asteroid.sizemin }} - {{ asteroid.sizemax }} Kg</td>
-        <td>{{ asteroid.distance }} Km</td>
+        <td>between {{ asteroid.sizemin }} Km and {{ asteroid.sizemax }} Km</td>
+        <td>{{ asteroid.distance }} lunar distance(s)</td>
         <td>{{ asteroid.nexttime }}</td>
     </tr>
     {% endfor %}
@@ -56,7 +56,7 @@
         const rows = document.querySelectorAll("tr[data-href]");
         rows.forEach(row => {
             row.addEventListener("click", () => {
-                window.location.href = row.dataset.href;
+                window.location.href = "asteroid?id=" + row.dataset.href;
             })
         })
     })

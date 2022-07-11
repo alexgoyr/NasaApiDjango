@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from NasaApp.views import home, asteroidList
+from NasaApp.views import home, asteroidList, asteroidDetails
 
 urlpatterns = [
     path('', home, name="Home"),
     path('asteroids', asteroidList.as_view(), name="Asteroids"),
+    path('asteroid', asteroidDetails.as_view(), name="AsteroidDetails"),
 ]

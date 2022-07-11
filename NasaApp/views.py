@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from NasaApp.services import get_asteroids
+from NasaApp.services import get_asteroids, get_asteroidDetails
 from NasaApp.forms import searchAsteroids
 
 def home(request):
@@ -16,8 +16,17 @@ class asteroidList(TemplateView):
     def get_context_data(self):
         startDate = self.request.GET.get('start', None)
         endDate = self.request.GET.get('end', None)
-        print(startDate, endDate)
+        #print(startDate, endDate)
         context = {
-            'asteroids' : get_asteroids(),
+            'asteroids' : get_asteroids(startDate, endDate),
+        }
+        return context
+
+class asteroidDetails(TemplateView):
+    template_name = 'details.html'
+    def get_context_data(self):
+        id = self.request.GET.get('id', None)
+        context = {
+            'previousCloseApproach' : get_asteroidDetails(id),
         }
         return context
