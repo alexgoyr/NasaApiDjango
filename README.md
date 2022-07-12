@@ -16,4 +16,4 @@ docker run -p 8000:8000 nasa_api_django
 ```
 
 # Usage
-The project is accessible with the address : http://localhost:8000
+Once started, the project is accessible with the address : http://localhost:8000
