@@ -11,7 +11,7 @@ OR
 
 Download the zip file : https://github.com/alexgoyr/NasaApiDjango/archive/refs/heads/main.zip
 
-2. 
+2. Installation & running the application
 *Prerequisites : Python3 and pip installed
 ```sh
 pip install -r requirements.txt
