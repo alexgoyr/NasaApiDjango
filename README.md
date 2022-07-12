@@ -1,6 +1,17 @@
 # NasaApiDjango
 
 # Getting Started
+1. Clone the repo
+*Prerequisites : git
+```sh
+git clone https://github.com/alexgoyr/NasaApiDjango
+```
+
+OR
+
+Download the zip file : https://github.com/alexgoyr/NasaApiDjango/archive/refs/heads/main.zip
+
+2. 
 *Prerequisites : Python3 and pip installed
 ```sh
 pip install -r requirements.txt
