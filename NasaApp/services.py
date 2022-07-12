@@ -5,12 +5,14 @@ from datetime import datetime, timedelta
 API_KEY = "eyyeOtiD9ZHkjJcrZoiM2i6WqjEwJDPdLTEgJFcT"
 
 def get_asteroids(start, end):
-    url = 'https://api.nasa.gov/neo/rest/v1/feed?start_date='+start+'&end_date='+end+'&detailed=true&api_key='+API_KEY
-    res = requests.get(url)
-    resJson = res.json()
-    asteroid_list = []
     startDate = datetime.strptime(start, "%Y-%m-%d")
     EndDate = datetime.strptime(end, "%Y-%m-%d")
+    url = 'https://api.nasa.gov/neo/rest/v1/feed?start_date='+start+'&end_date='+end+'&detailed=true&api_key='+API_KEY
+    res = requests.get(url)
+    if res.status_code != 200:
+        return []
+    resJson = res.json()
+    asteroid_list = []
     currentDate = startDate
     while currentDate != EndDate + timedelta(days=1):
         for asteroid in resJson['near_earth_objects'][currentDate.strftime("%Y-%m-%d")]:
@@ -28,6 +30,8 @@ def get_asteroids(start, end):
 def get_asteroidDetails(id):
     url = 'https://api.nasa.gov/neo/rest/v1/neo/'+id+'?api_key='+API_KEY
     res = requests.get(url)
+    if res.status_code != 200:
+        return []
     resJson = res.json()
     previousCloseApproach = []
     i = 0
@@ -45,9 +49,8 @@ def get_asteroidDetails(id):
             'date' : closeApproach[i]['close_approach_date'],
             'distance': closeApproach[i]['miss_distance']['lunar']
         }
-        
         previousCloseApproach.append(tempCloseApproach)
         i = i - 1
         j = j + 1
-    print(previousCloseApproach)
+
     return previousCloseApproach

@@ -7,18 +7,14 @@ def home(request):
     form = searchAsteroids()
     return render(request, "home.html", {"form": form})
 
-#class asteroidList(ListView):
-#    model = [["a", "zqeat"], ["b", "azetazet"]]
-
-
 class asteroidList(TemplateView):
     template_name = 'asteroid_list.html'
     def get_context_data(self):
         startDate = self.request.GET.get('start', None)
         endDate = self.request.GET.get('end', None)
-        #print(startDate, endDate)
+        asteroids = get_asteroids(startDate, endDate)
         context = {
-            'asteroids' : get_asteroids(startDate, endDate),
+            'asteroids' : asteroids,
         }
         return context
 
@@ -26,7 +22,8 @@ class asteroidDetails(TemplateView):
     template_name = 'details.html'
     def get_context_data(self):
         id = self.request.GET.get('id', None)
+        previousCloseApproach = get_asteroidDetails(id)
         context = {
-            'previousCloseApproach' : get_asteroidDetails(id),
+            'previousCloseApproach' : previousCloseApproach,
         }
         return context

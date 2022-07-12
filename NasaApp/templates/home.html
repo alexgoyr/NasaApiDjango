@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Home</title>
-    </head>
-<body>
-    <div>Search for asteroids between two dates :</div>
-    <div id="content", name="content">
+<head>
+<style>
+
+#container{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 2rem;
+}
+</style>
+<title>Home</title>
+</head>
+<div id="container">
+    <div name="content">
+        <div>Search for asteroids between two dates (maximum of 7 days):</div>
         <form method="get" action="/asteroids">
             {{form}}
             <button type="submit">Search</button>
         </form>
     </div>
-</body>
+</div>
 </html>
