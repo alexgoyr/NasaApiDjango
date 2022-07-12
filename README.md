@@ -12,7 +12,7 @@ OR Download the zip file : https://github.com/alexgoyr/NasaApiDjango/archive/ref
 
 2. Installation & running the application
 
-*Prerequisites : Python3 and pip installed
+* Prerequisites : Python3 and pip installed
 ```sh
 pip install -r requirements.txt
 python3 manage.py runserver
@@ -20,7 +20,7 @@ python3 manage.py runserver
 
 OR
 
-*Prerequisites : Docker installed
+* Prerequisites : Docker installed
 ```sh
 docker build -t nasa_api_django .
 docker run -p 8000:8000 nasa_api_django
